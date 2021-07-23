@@ -688,7 +688,8 @@ export function validateWalletInit(
       'rpcUri',
       'webUri',
       'xsUri',
-      'blockedPopupRedirect'
+      'blockedPopupRedirect',
+      'chainId'
     ],
     'walletInitObject'
   )
