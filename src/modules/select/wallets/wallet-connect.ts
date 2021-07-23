@@ -13,28 +13,18 @@ import { app } from '../../../stores'
 function walletConnect(
   options: WalletConnectOptions & { networkId: number }
 ): WalletModule {
-  const {
-    infuraKey,
-    rpc,
-    bridge,
-    preferred,
-    label,
-    iconSrc,
-    svg,
-    networkId
-    // chainId
-    // rpcEndpoint
-  } = options
+  const { infuraKey, rpc, bridge, preferred, label, iconSrc, svg, networkId } =
+    options
 
   const pollingInterval = get(app).blockPollingInterval
 
-  // if (!infuraKey) {
-  //   if (!rpc || !rpc[String(chainId)]) {
-  //     throw new Error(
-  //       `A "infuraKey" or a "rpc" object with a parameter of ${networkId} must be included in the WalletConnect initialization object`
-  //     )
-  //   }
-  // }
+  if (!infuraKey) {
+    if (!rpc || !rpc[networkId]) {
+      throw new Error(
+        `A "infuraKey" or a "rpc" object with a parameter of ${networkId} must be included in the WalletConnect initialization object`
+      )
+    }
+  }
 
   return {
     name: label || 'WalletConnect',
@@ -48,30 +38,18 @@ function walletConnect(
 
       const { resetWalletState, networkName, getBalance } = helpers
 
-      // const RPC_URLS = {
-      //   1: `https://mainnet.infura.io/v3/${infuraKey}`,
-      //   5: `https://goerli.infura.io/v3/${infuraKey}`,
-      //   56: 'https://bsc-dataseed1.binance.org:443',
-      //   97: 'https://data-seed-prebsc-1-s1.binance.org:8545'
-      // } as const
-
       const rpcUrl =
-        rpc && rpc[String(networkId)]
-          ? rpc[String(networkId)]
+        rpc && rpc[networkId]
+          ? rpc[networkId]
           : `https://${networkName(networkId)}.infura.io/v3/${infuraKey}`
-      // const rpcUrl = rpcEndpoint]
-      console.log('rpcUrl', rpcUrl)
-
-      // const rpcUrl
 
       const balanceProvider = createProvider({ rpcUrl })
-      console.log('balanceProvider', balanceProvider)
 
-      // if (infuraKey && rpc) {
-      //   throw new Error(
-      //     'WalletConnect requires  an Infura ID or a custom RPC object but not both.'
-      //   )
-      // }
+      if (infuraKey && rpc) {
+        throw new Error(
+          'WalletConnect requires  an Infura ID or a custom RPC object but not both.'
+        )
+      }
 
       const provider = new WalletConnectProvider({
         infuraId: infuraKey,
