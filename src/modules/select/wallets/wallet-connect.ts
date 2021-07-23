@@ -22,7 +22,7 @@ function walletConnect(
     iconSrc,
     svg,
     networkId,
-    // chainId
+    chainId,
     rpcEndpoint
   } = options
 
@@ -48,11 +48,20 @@ function walletConnect(
 
       const { resetWalletState, networkName, getBalance } = helpers
 
+      const RPC_URLS = {
+        1: `https://mainnet.infura.io/v3/${infuraApiKey}`,
+        5: `https://goerli.infura.io/v3/${infuraApiKey}`,
+        56: 'https://bsc-dataseed1.binance.org:443',
+        97: 'https://data-seed-prebsc-1-s1.binance.org:8545'
+      } as const
+
       // const rpcUrl =
       //   rpc && rpc[String(chainId)]
       //     ? rpc[String(networkId)]
       //     : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
       const rpcUrl = rpcEndpoint
+
+      // const rpcUrl
 
       const balanceProvider = createProvider({ rpcUrl })
 
@@ -63,8 +72,8 @@ function walletConnect(
       // }
 
       const provider = new WalletConnectProvider({
-        // infuraId: infuraKey,
-        rpc: rpcEndpoint,
+        infuraId: infuraKey,
+        rpc: rpcUrl,
         bridge,
         pollingInterval
       })
