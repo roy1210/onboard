@@ -22,18 +22,19 @@ function walletConnect(
     iconSrc,
     svg,
     networkId,
-    chainId
+    // chainId
+    rpcEndpoint
   } = options
 
   const pollingInterval = get(app).blockPollingInterval
 
-  if (!infuraKey) {
-    if (!rpc || !rpc[String(chainId)]) {
-      throw new Error(
-        `A "infuraKey" or a "rpc" object with a parameter of ${networkId} must be included in the WalletConnect initialization object`
-      )
-    }
-  }
+  // if (!infuraKey) {
+  //   if (!rpc || !rpc[String(chainId)]) {
+  //     throw new Error(
+  //       `A "infuraKey" or a "rpc" object with a parameter of ${networkId} must be included in the WalletConnect initialization object`
+  //     )
+  //   }
+  // }
 
   return {
     name: label || 'WalletConnect',
@@ -47,10 +48,11 @@ function walletConnect(
 
       const { resetWalletState, networkName, getBalance } = helpers
 
-      const rpcUrl =
-        rpc && rpc[String(chainId)]
-          ? rpc[String(networkId)]
-          : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
+      // const rpcUrl =
+      //   rpc && rpc[String(chainId)]
+      //     ? rpc[String(networkId)]
+      //     : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
+      const rpcUrl = rpcEndpoint
 
       const balanceProvider = createProvider({ rpcUrl })
 
