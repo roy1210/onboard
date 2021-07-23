@@ -21,9 +21,9 @@ function walletConnect(
     label,
     iconSrc,
     svg,
-    networkId,
-    chainId,
-    rpcEndpoint
+    networkId
+    // chainId
+    // rpcEndpoint
   } = options
 
   const pollingInterval = get(app).blockPollingInterval
@@ -55,15 +55,17 @@ function walletConnect(
       //   97: 'https://data-seed-prebsc-1-s1.binance.org:8545'
       // } as const
 
-      // const rpcUrl =
-      //   rpc && rpc[String(chainId)]
-      //     ? rpc[String(networkId)]
-      //     : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
-      // const rpcUrl = rpcEndpoint
+      const rpcUrl =
+        rpc && rpc[String(networkId)]
+          ? rpc[String(networkId)]
+          : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
+      // const rpcUrl = rpcEndpoint]
+      console.log('rpcUrl', rpcUrl)
 
       // const rpcUrl
 
       const balanceProvider = createProvider({ rpcUrl })
+      console.log('balanceProvider', balanceProvider)
 
       // if (infuraKey && rpc) {
       //   throw new Error(
