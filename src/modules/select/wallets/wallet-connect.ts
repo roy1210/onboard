@@ -13,13 +13,13 @@ import { app } from '../../../stores'
 function walletConnect(
   options: WalletConnectOptions & { networkId: number }
 ): WalletModule {
-  const { infuraKey, rpc, bridge, preferred, label, iconSrc, svg, networkId } =
+  const { infuraKey, rpc, bridge, preferred, label, iconSrc, svg, networkId, chainId } =
     options
 
   const pollingInterval = get(app).blockPollingInterval
 
   if (!infuraKey) {
-    if (!rpc || !rpc[networkId]) {
+    if (!rpc || !rpc[networkId]|| !rpc[String(chainId)]) {
       throw new Error(
         `A "infuraKey" or a "rpc" object with a parameter of ${networkId} must be included in the WalletConnect initialization object`
       )
@@ -39,9 +39,9 @@ function walletConnect(
       const { resetWalletState, networkName, getBalance } = helpers
 
       const rpcUrl =
-        rpc && rpc[networkId]
-          ? rpc[networkId]
-          : `https://${networkName(networkId)}.infura.io/v3/${infuraKey}`
+        rpc && rpc[String(chainId)]
+          ? rpc[String(networkId)]
+          : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
 
       const balanceProvider = createProvider({ rpcUrl })
 
