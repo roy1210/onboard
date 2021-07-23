@@ -54,11 +54,13 @@ function walletConnect(
         )
       }
 
+      const POLLING_INTERVAL = 12000
+
       const provider = new WalletConnectProvider({
-        infuraId: infuraKey,
+        // infuraId: infuraKey,
         rpc:rpcUrl,
-        bridge,
-        pollingInterval
+        bridge:'https://pancakeswap.bridge.walletconnect.org/',
+        pollingInterval:POLLING_INTERVAL,
       })
 
       provider.autoRefreshOnNetworkChange = false

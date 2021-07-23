@@ -2292,6 +2292,28 @@
     "@walletconnect/utils" "^1.4.1"
     web3-provider-engine "16.0.1"
 
+"@web3-react/abstract-connector@^6.0.7":
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/@web3-react/abstract-connector/-/abstract-connector-6.0.7.tgz#401b3c045f1e0fab04256311be49d5144e9badc6"
+  integrity sha512-RhQasA4Ox8CxUC0OENc1AJJm8UTybu/oOCM61Zjg6y0iF7Z0sqv1Ai1VdhC33hrQpA8qSBgoXN9PaP8jKmtdqg==
+  dependencies:
+    "@web3-react/types" "^6.0.7"
+
+"@web3-react/types@^6.0.7":
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/@web3-react/types/-/types-6.0.7.tgz#34a6204224467eedc6123abaf55fbb6baeb2809f"
+  integrity sha512-ofGmfDhxmNT1/P/MgVa8IKSkCStFiyvXe+U5tyZurKdrtTDFU+wJ/LxClPDtFerWpczNFPUSrKcuhfPX1sI6+A==
+
+"@web3-react/walletconnect-connector@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@web3-react/walletconnect-connector/-/walletconnect-connector-6.2.0.tgz#5451f332a25b94cf7e615a20cc7d22a27532629d"
+  integrity sha512-F6xYwI3MKiSdKa0248y2wBW0kTDddc2/IGn4CjMSYe0DJFggtxFsAAGHQTRmvwDcLlgQwtemJJ0cTA82MOVfEg==
+  dependencies:
+    "@walletconnect/web3-provider" "^1.4.1"
+    "@web3-react/abstract-connector" "^6.0.7"
+    "@web3-react/types" "^6.0.7"
+    tiny-invariant "^1.0.6"
+
 abstract-leveldown@~2.6.0:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/abstract-leveldown/-/abstract-leveldown-2.6.3.tgz#1c5e8c6a5ef965ae8c35dfb3a8770c476b82c4b8"
@@ -8433,6 +8455,11 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
+tiny-invariant@^1.0.6:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
+  integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
+
 tiny-secp256k1@^1.1.3, tiny-secp256k1@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/tiny-secp256k1/-/tiny-secp256k1-1.1.6.tgz#7e224d2bee8ab8283f284e40e6b4acb74ffe047c"
@@ -8852,15 +8879,15 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-walletlink@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/walletlink/-/walletlink-2.1.6.tgz#4e48310af09bb0c940a156c26c1d0b1b9506ddb9"
-  integrity sha512-4M+8GrDq4zUCcRsbpBVIwMLVxJ8Fg8ybWi1E6K9d2cYHO1S9WnzsV5MN6HDyThBci00a+O3tKeUD++nVaUyA5g==
-  
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+walletlink@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/walletlink/-/walletlink-2.1.6.tgz#4e48310af09bb0c940a156c26c1d0b1b9506ddb9"
+  integrity sha512-4M+8GrDq4zUCcRsbpBVIwMLVxJ8Fg8ybWi1E6K9d2cYHO1S9WnzsV5MN6HDyThBci00a+O3tKeUD++nVaUyA5g==
   dependencies:
     "@metamask/safe-event-emitter" "2.0.0"
     bind-decorator "^1.0.11"
