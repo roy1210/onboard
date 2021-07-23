@@ -194,8 +194,8 @@ export interface WalletConnectOptions extends CommonWalletOptions {
     [key: string]: string
   }
   bridge: string
-  chainId: number
-  rpcEndpoint: string
+  // chainId: number
+  // rpcEndpoint: string
 }
 
 export interface TrezorOptions extends CommonWalletOptions {

@@ -59,7 +59,7 @@ function walletConnect(
       //   rpc && rpc[String(chainId)]
       //     ? rpc[String(networkId)]
       //     : `https://${networkName(chainId)}.infura.io/v3/${infuraKey}`
-      const rpcUrl = rpcEndpoint
+      // const rpcUrl = rpcEndpoint
 
       // const rpcUrl
 
@@ -73,7 +73,7 @@ function walletConnect(
 
       const provider = new WalletConnectProvider({
         infuraId: infuraKey,
-        rpc: rpcUrl,
+        rpc,
         bridge,
         pollingInterval
       })
