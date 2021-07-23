@@ -10,12 +10,10 @@ import { get } from 'svelte/store'
 
 import { app } from '../../../stores'
 
-
-
-function walletConnect(
+function walletConnectBackup(
   options: WalletConnectOptions & { networkId: number }
-  ): WalletModule {
-    const { infuraKey, rpc, bridge, preferred, label, iconSrc, svg, networkId } =
+): WalletModule {
+  const { infuraKey, rpc, bridge, preferred, label, iconSrc, svg, networkId } =
     options
 
   const pollingInterval = get(app).blockPollingInterval
@@ -40,11 +38,10 @@ function walletConnect(
 
       const { resetWalletState, networkName, getBalance } = helpers
 
-      const rpcUrl ='https://bsc-dataseed1.binance.org:443'
-      // const rpcUrl =
-      //   rpc && rpc[networkId]
-      //     ? rpc[networkId]
-      //     : `https://${networkName(networkId)}.infura.io/v3/${infuraKey}`
+      const rpcUrl =
+        rpc && rpc[networkId]
+          ? rpc[networkId]
+          : `https://${networkName(networkId)}.infura.io/v3/${infuraKey}`
 
       const balanceProvider = createProvider({ rpcUrl })
 
@@ -56,7 +53,7 @@ function walletConnect(
 
       const provider = new WalletConnectProvider({
         infuraId: infuraKey,
-        rpc:rpcUrl,
+        rpc,
         bridge,
         pollingInterval
       })
@@ -122,4 +119,4 @@ function walletConnect(
   }
 }
 
-export default walletConnect
+export default walletConnectBackup
